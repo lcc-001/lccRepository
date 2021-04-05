@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>后台登录</title>
+    <link href="css/login.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+    <script src="/js/bootstrap.min.js" type="application/javascript"></script>
+</head>
+<body>
+<div class="login">
+    <form method="post" action="/login" th:if="${section == 'login'}">
+        <input name="action" value="login" type="hidden">
+        <input name="name" placeholder="用户名" required="" type="text">
+        <hr class="hr15">
+        <input name="password" placeholder="密码" required="" type="password">
+        <hr class="hr15">
+            <div class="alert alert-danger col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                 th:text="${error}"
+                 th:if="${error != null}">
+            </div>
+        <hr class="hr15">
+        <input value="登录" style="width:100%;" type="submit">
+        <hr class="hr20">
+        <div>
+            <a href="/regist">注册</a>
+            <a href="">修改密码</a>
+        </div>
+    </form>
+    <form method="post" action="/regist" th:if="${section == 'regist'}">
+        <input name="action" value="login" type="hidden">
+        <input name="name" placeholder="输入用户名" required="" type="text">
+        <hr class="hr15">
+        <input name="password" placeholder="密码" required="" type="password">
+        <hr class="hr15">
+        <input name="password2" placeholder="再次输入密码" required="" type="password">
+        <hr class="hr15">
+        <div class="alert alert-danger col-lg-12 col-md-12 col-sm-12 col-xs-12"
+             th:text="${message}"
+             th:if="${message != null}">
+        </div>
+        <input value="注册" style="width:100%;" type="submit">
+        <hr class="hr20">
+    </form>
+</div>
+</body>
+</html>
